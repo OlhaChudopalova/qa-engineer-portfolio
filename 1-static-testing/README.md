@@ -1,19 +1,19 @@
 # 1. Static Testing
-
-This section contains examples of static testing: logic analysis, UX review, text review, and detection of requirement ambiguities.  
-Content will be expanded with detailed cases.
+This section contains examples of static testing, including logic analysis, UX review, text review, and detection of requirement ambiguities.  
+Below are selected cases demonstrating different aspects of QA work.
 
 ## Cases
 
 - **1.1 – Improving Password Validation.md**  
-  Analysis of password validation logic and UX.  
+  A detailed analysis of password validation logic, UX issues, edge-case scenarios, and proposed improvements.
 
 - **1.2 – Text Review and Terminology**  
   Review of notification messages, project terminology, and Home Page texts.  
   **Includes:**  
   - `1.2.1-notification-text-review.md`  
   - `1.2.2-terminology-unification-table.md`  
-  - `1.2.3-home-page-text-review.md`
+  - `1.2.3-home-page-text-and-ux-review.md`  
+    - Screenshots stored in `home-page-assets/`
 
-- **1.3 – Work Format Logic Ambiguity.md**  
-  Identification of logical ambiguities in user work format selection.
+- **1.3 – Clear Work Format Selection.md**  
+  Clarifying the user’s work format selection to eliminate logical ambiguities.
