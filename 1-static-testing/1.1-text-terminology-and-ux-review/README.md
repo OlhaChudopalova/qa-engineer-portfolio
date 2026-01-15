@@ -1,4 +1,4 @@
-# 1.2 – Text, Terminology, and UX Review
+# 1.1 – Text, Terminology, and UX Review
 This section contains static testing focused on reviewing notification texts, unifying terminology across the project, and analyzing Home Page texts from a UX perspective.  
 The goal of this review was to improve text quality, reduce ambiguity, and ensure consistent and clear communication with users.
 ## Included cases:
