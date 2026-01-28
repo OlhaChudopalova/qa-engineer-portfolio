@@ -15,8 +15,10 @@ API приймає невалідну структуру JSON у блоці `con
 
 ---
 
-## Preconditions
-Користувач авторизований та має можливість заповнювати профіль через API.
+## Preconditions  
+
+Користувач авторизований та має можливість заповнювати профіль через API.  
+**LinkedIn-профіль** є обов’язковим полем для збереження профілю.
 
 ---
 
@@ -28,17 +30,26 @@ API приймає невалідну структуру JSON у блоці `con
 ---
 
 ## Expected Result
-API має відхиляти невалідну структуру JSON та повертати помилку 4xx з повідомленням про некоректний формат даних.
+API має:
+- відхиляти невалідну структуру JSON;
+- повертати помилку 4xx у разі дубльованих ключів або неправильної структури;
+- **повертати помилку 4xx, якщо відсутнє обов’язкове поле LinkedIn**;
+- не дозволяти зберігати профіль без посилання на LinkedIn.
 
 ---
 
 ## Actual Result
-API повертає 200 OK та зберігає лише останнє значення з дубльованих ключів. В результаті відбувається втрата даних, а збережені контакти залежать від порядку ключів у тілі запиту.
+API повертає 200 OK та зберігає лише останнє значення з дубльованих ключів.  
+В результаті:
+- відбувається втрата даних;
+- збережені контакти залежать від порядку ключів;
+- **профіль може бути збережений без обов’язкового LinkedIn**, що порушує бізнес-логіку.
 
 ---
 
 ## Impact / Risks
-- Втрата контактних даних користувача.  
+- Можливість обходу обов’язкової бізнес-вимоги (LinkedIn) через маніпуляцію структурою JSON.
+- Збереження некоректних або неповних профілів у системі.
 - Некоректне відображення профілю на фронтенді.  
 - Непередбачувана поведінка API залежно від порядку ключів.  
 - Порушення контракту API та стандарту JSON.
@@ -50,7 +61,10 @@ API повертає 200 OK та зберігає лише останнє зна
 - `contacts_data.contacts`  
 - `contacts_data.networks`  
 
-та повертати помилку 4xx у разі дубльованих ключів або неправильної структури об’єкта.
+та повертати помилку 4xx у разі:
+- дубльованих ключів;
+- неправильної структури;
+- **відсутності обов’язкового поля LinkedIn.**
 
 ---
 
@@ -74,8 +88,8 @@ API повертає 200 OK та зберігає лише останнє зна
 
 ```
 
-Current API behavior
-1. Для contacts
+### Current API behavior
+#### 1. Для "contacts"
 Приклад A – втрачається whatsapp та telegram:
 
 ```json
@@ -126,7 +140,7 @@ Current API behavior
   "contact_value": "639797753" }
 
 ```
-2. Для networks
+#### 2. Для "networks"
 Приклад A (LinkedIn втрачається):
 
 ```json
@@ -168,10 +182,9 @@ Current API behavior
   "link": "https://linkedin.com/linked" }
 
 ```
-Key Observation:
-Key Observation Черговість ключів прямо визначає, які контакти потраплять у БД і що відобразиться у фронтенді. Залежно від порядку ключів у тілі запиту в БД та на фронті зберігатиметься різний контакт. 
-
-Сервер приймає навіть більш “екстремальні” випадки дублювання ключів у одному об’єкті:
+### Key Observation:  
+Черговість ключів прямо визначає, які контакти потраплять у БД і що відобразиться у фронтенді. Залежно від порядку ключів у тілі запиту в БД та на фронті зберігатиметься різний контакт.  
+Сервер приймає навіть більш “екстремальні” випадки дублювання ключів в одному об’єкті:
 
 ```json
 
@@ -208,27 +221,16 @@ GET-запит повертає лише останнє значення:
 
 ```
 
-### Attachments in screenshots folder
+### 📎 Attachments (screenshots folder)
 
-**1. Invalid POST request with duplicated keys**
-**2. GET response showing data loss** 
-**3. Frontend displays only last saved contact**
-
-
-#### Last_github – Lost LinkedIn: 
-- `post_last_github.jpg`
-- `get_last_github.jpg` 
-- `front_last_github.jpg` 
+🔸  Invalid POST request with duplicated keys  
+🔸  GET response showing data loss  
+🔸  Frontend displays only last saved contact
 
 
-#### Last_phone – Lost other contacts: 
-- `post_last_phone.jpg` 
-- `get_last_phone.jpg` 
-- `front_last_phone.jpg` 
+🔹 **last_github_lost_linkedin:** [01_post_last_github.jpg](screenshots/last_github_lost_linkedin/01_post_last_github.jpg), [02_get_last_github.jpg](screenshots/last_github_lost_linkedin/02_get_last_github.jpg), [03_front_last_github.jpg](screenshots/last_github_lost_linkedin/03_front_last_github.jpg)
 
+🔹 **last_phone:** [01_post_last_phone.jpg](screenshots/last_phone/01_post_last_phone.jpg), [02_get_last_phone.jpg](screenshots/last_phone/02_get_last_phone.jpg), [03_front_last_phone.jpg](screenshots/last_phone/03_front_last_phone.jpg)
 
-#### Last_whatsapp – Lost other contacts: 
-- `post_last_whatsapp.jpg` 
-- `get_last_whatsapp.jpg` 
-- `front_last_whatsapp.jpg`
+🔹 **last_whatsapp:** [01_post_last_whatsapp.jpg](screenshots/last_whatsapp/01_post_last_whatsapp.jpg), [02_get_last_whatsapp.jpg](screenshots/last_whatsapp/02_get_last_whatsapp.jpg), [03_front_last_whatsapp.jpg](screenshots/last_whatsapp/03_front_last_whatsapp.jpg)
 
