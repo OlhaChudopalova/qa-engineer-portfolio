@@ -9,7 +9,7 @@
 - Дефект було виправлено.
 - Під час подальшого тестування PUT виявлено системну проблему: відсутність контрольованих правил редагування профілів.
 - Ініційовано міжкомандну дискусію (BE, FE, BA, QA) та запропоновано нову модель CRUD-логіки.
-- Впроваджено контрольовані переходи статусів, що зменшило ризик неконсистентних даних у production та підвищило надійність API.
+- Впроваджено контрольовані переходи статусів, що зменшило ризик неконсистентних даних та підвищило надійність API.
 
 ---
 ##  From Defect to Improvement
@@ -30,9 +30,9 @@
 ---
 ## Key Outcomes
 
-Чітко розмежовано:
-POST – лише для створення профілів;
-PUT – лише для редагування дозволених статусів.
+- Чітко розмежовано:
+  - POST – лише для створення профілів;
+  - PUT – лише для редагування дозволених статусів.
 - Запроваджено валідацію допустимих переходів статусів.
 - Заблоковано редагування профілів у статусах модерації або блокування.
 - API повертає коректні HTTP status codes при порушенні правил.
@@ -46,15 +46,7 @@ PUT – лише для редагування дозволених статус
 - [`Proposed Improvement`](./proposed-improvement.md)
 ---
 
-## Visual Examples
-**Screenshots демонструють проблемну поведінку та виправлення після впровадження CRUD правил.**
-
-
-### PUT — заборона оновлення DRAFT та Pending
-- ![PUT DRAFT Before](./screenshots/improvement/put_draft_old.jpg)
-- ![PUT DRAFT After](./screenshots/improvement/put_draft_new.jpg)
-
-### POST — заборона створення Approved та Part_Block
-- ![POST Approved Before](./screenshots/improvement/post_approved_old.jpg)
-- ![POST Approved After](./screenshots/improvement/post_approved_new.jpg)
-
+## Visual Evidence 
+Detailed screenshots are available in the `screenshots/` directory:
+- `screenshots/bug/` – original defect reproduction
+- `screenshots/improvement/` – before and after behavior following the improvement
