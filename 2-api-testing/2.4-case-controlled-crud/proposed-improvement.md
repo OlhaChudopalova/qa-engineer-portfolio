@@ -154,13 +154,13 @@
 ### PUT – Оновлення профілю
 
 DRAFT  
-Before: [1_put_draft_old.jpg](./screenshots/bug/1_put_draft_old.jpg) → After: [2_put_draft_new.jpg](./screenshots/improvement/2_put_draft_new.jpg)
+Before: [1_put_draft_old.jpg](./screenshots/improvement/1_put_draft_old.jpg) → After: [2_put_draft_new.jpg](./screenshots/improvement/2_put_draft_new.jpg)
 
 PENDING  
-Before: [3_put_pending_old.jpg](./screenshots/bug/3_put_pending_old.jpg) → After: [4_put_pending_new.jpg](./screenshots/improvement/4_put_pending_new.jpg)
+Before: [3_put_pending_old.jpg](./screenshots/improvement/3_put_pending_old.jpg) → After: [4_put_pending_new.jpg](./screenshots/improvement/4_put_pending_new.jpg)
 
 ### POST – Створення профілю
 
 CONFIRMED  
-Before: [5_post_confirmed_old.jpg](./screenshots/bug/5_post_confirmed_old.jpg) → After: [6_post_confirmed_new.jpg](./screenshots/improvement/6_post_confirmed_new.jpg)
+Before: [5_post_confirmed_old.jpg](./screenshots/improvement/5_post_confirmed_old.jpg) → After: [6_post_confirmed_new.jpg](./screenshots/improvement/6_post_confirmed_new.jpg)
 
