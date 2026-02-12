@@ -29,8 +29,8 @@
 
 **Examples:**
 
-![PUT Updates Profile in Any Status](./screenshots/improvement/put_draft_old.jpg)
-![PUT Updates Profile in Any Status](./screenshots/improvement/put_pending_old.jpg)
+![PUT Updates Profile in Any Status](./screenshots/improvement/1_put_draft_old.jpg)
+![PUT Updates Profile in Any Status](./screenshots/improvement/3_put_pending_old.jpg)
 
 > Скриншоти демонструють, що PUT оновлює профіль у будь-якому статусі та не накладає обмежень відповідно до бізнес-логіки.
 
@@ -151,12 +151,16 @@
 
 Скріншоти демонструють порівняння поведінки API до та після впровадження нових правил CRUD:
 
+### PUT – Оновлення профілю
 
-### PUT – оновлення профілю
-- Before: [put_draft_old.jpg](./screenshots/bug/put_draft_old.jpg), [put_pending_old.jpg](./screenshots/bug/put_pending_old.jpg)
-- After: [put_draft_new.jpg](./screenshots/improvement/put_draft_new.jpg), [put_pending_new.jpg](./screenshots/improvement/put_pending_new.jpg)
+DRAFT  
+Before: [1_put_draft_old.jpg](./screenshots/bug/1_put_draft_old.jpg) → After: [2_put_draft_new.jpg](./screenshots/improvement/2_put_draft_new.jpg)
 
-### POST — створення профілю
-- Before: [post_confirmed_old.jpg](./screenshots/bug/post_confirmed_old.jpg)
-- After: [post_confirmed_new.jpg](./screenshots/improvement/post_confirmed_new.jpg)
+PENDING  
+Before: [3_put_pending_old.jpg](./screenshots/bug/3_put_pending_old.jpg) → After: [4_put_pending_new.jpg](./screenshots/improvement/4_put_pending_new.jpg)
+
+### POST – Створення профілю
+
+CONFIRMED  
+Before: [5_post_confirmed_old.jpg](./screenshots/bug/5_post_confirmed_old.jpg) → After: [6_post_confirmed_new.jpg](./screenshots/improvement/6_post_confirmed_new.jpg)
 
