@@ -1,7 +1,7 @@
 #  Original Bug Report
 
-**Title:** POST request incorrectly updates profile in any status and changes statuses  
-**Priority:** High  
+**Title:** The POST request updates profiles in any status and sets them to PENDING  
+**Priority:** High    
 **Severity:** High  
 
 ---
@@ -28,12 +28,12 @@ Endpoint `POST /api/v1/executor/post/profile-data/` не лише створює
 
 ##  Preconditions
 Профіль існує у будь-якому статусі:  
-Draft, Pending, Part Block, Timer Block, Full Block, Approved, Confirmed.
+DRAFT, PENDING, PART_BLOCK, TIMER_BLOCK, FULL_ BLOCK, APPROVED, CONFIRMED.
 
 ---
 
 ##  Steps to Reproduce
-1. Відправити `POST /api/v1/executor/post/profile-data/` з валідним JSON для статусу `Draft`.
+1. Відправити `POST /api/v1/executor/post/profile-data/` з валідним JSON для статусу `DRAFT`.
 2. Повторити для всіх статусів профілю.
 3. Перевірити статус профілю після виконання POST-запиту.
 
@@ -41,13 +41,13 @@ Draft, Pending, Part Block, Timer Block, Full Block, Approved, Confirmed.
 
 ##  Expected Result
 Endpoint `POST /api/v1/executor/post/profile-data/`:
-- дозволений для статусів `Draft` / `Part_Block` з переходом у статус `Pending`;
+- дозволений для статусів `DRAFT` / `PART_BLOCK` з переходом у статус `Pending`;
 - у всіх інших статусах має повертати 4xx помилку.
 
 ---
 
 ## Actual Result
-Endpoint `POST /api/v1/executor/post/profile-data/` створює та оновлює профіль у будь-якому статусі та переводить його в `Pending`.
+Endpoint `POST /api/v1/executor/post/profile-data/` створює та оновлює профіль у будь-якому статусі та переводить його в `PENDING`.
 
 ---
 
@@ -59,15 +59,14 @@ Endpoint `POST /api/v1/executor/post/profile-data/` створює та онов
 ---
 
 ## Suggested Fix
-Endpoint `POST /api/v1/executor/post/profile-data/` застосовувати виключно для статусів `Draft` / `Part_Block` та присвоювати статус `Pending`.  
+Endpoint `POST /api/v1/executor/post/profile-data/` застосовувати виключно для статусів `DRAFT` / `PART_BLOCK` та присвоювати статус `PENDING`.  
 В інших статусах повертати 4xx помилку.
 
 ---
 
 ##  Attachments
-- Скріншоти POST-запиту, профілю користувача та Admin Panel.
-- Для наглядності у поле `first_name` під час POST/PUT запиту введено поточний статус профілю  
-  (наприклад, `Mikle_POST_Confirmed`), який відображається на фронтенді та в Admin Panel.
-- Кнопка **Pending Approval** підтверджує перехід статусу в `Pending` на фронтенді,  
-  а в Admin Panel явно відображено статус `Pending`.
-
+Скріншоти демонструють проблемну поведінку та контекст багу:
+- **Bug screenshots** (до виправлення, для баг-репорту): [./screenshots/bug](./screenshots/bug)  
+Для наглядності:
+- У полі `first_name` під час POST/PUT запиту введено поточний статус профілю (наприклад, `Mikle_POST_Confirmed`), який відображається на фронтенді та в Admin Panel.  
+- Кнопка **Pending Approval** підтверджує перехід статусу в `Pending` на фронтенді, а в Admin Panel явно відображено статус `Pending`.
