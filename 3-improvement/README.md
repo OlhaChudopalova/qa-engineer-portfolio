@@ -1,18 +1,10 @@
-# Improvement
+# Improvements 
 
-Цей розділ містить кейси покращень продукту, які не є критичними для MVP, але підвищують якість, стабільність і зручність використання.  
 
-## Кейси
+This section contains proactive improvement proposals, security hardening initiatives, and system-level enhancement ideas aimed at improving platform reliability, data protection, and overall product quality.
 
-- Технічний борг, який можна виправити пізніше.  
-- Неконсистентності в даних або документації.  
-- Невеликі UX/UI покращення, які не блокують основну функціональність.  
-- Пропозиції щодо оптимізації процесів або логіки продукту.  
+---
 
-Кожен кейс містить:
+## Cases
 
-- опис проблеми або недоліку,  
-- аналіз впливу на користувачів або систему,  
-- пропозицію рішення або покращення.  
-
-Цей блок демонструє підхід до **планування покращень** та **аналізу можливостей розвитку продукту**.
+- **3.1** – [Security: Preventing Email Enumeration in Password Reset Flow](./3.1-security-email-enumeration-password-reset)
