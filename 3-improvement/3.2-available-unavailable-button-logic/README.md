@@ -90,8 +90,12 @@ Improvement approved and accepted for implementation.
 
 ## Screenshots
 
-**Кнопка присутня:** `Available / Unavailable` (статус APPROVED)  
+**Кнопка присутня:**   
+`Available / Unavailable` (статус APPROVED)  
+
 ![Available](available.jpg)
 
-**Кнопка відсутня:** `Available / Unavailable` (статус PENDING)
+**Кнопка відсутня:**  
+`Available / Unavailable` (статус PENDING)
+
 ![Unavailable](out_available.jpg)
