@@ -48,5 +48,5 @@
 
 ## Visual Evidence 
 Detailed screenshots are available in the `screenshots/` directory:
-- `screenshots/bug/` – original defect reproduction
-- `screenshots/improvement/` – before and after behavior following the improvement
+- [Original defect reproduction](screenshots/bug/) –  original defect reproduction
+- [Improved behavior](screenshots/improvement/) – before and after behavior following the improvement
