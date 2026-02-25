@@ -1,22 +1,24 @@
-# 1. Static Testing
+# Static Testing
 
-This section contains examples of static testing, including logic analysis, UX review, text review, and detection of requirement ambiguities.  
+This section presents examples of static testing, which involves evaluating software artifacts without executing the code.  
+The focus includes logic analysis, UX review, text/content evaluation, and detection of requirement ambiguities.  
+
 Below are selected cases demonstrating different aspects of QA work.
+
 
 ## Cases
 
-### 1.1 – Improving Password Validation
-A detailed analysis of password validation logic, UX issues, edge-case scenarios, and proposed improvements.
+### 1.1. Text, Terminology, and UX Review
 
-### 1.2 – Text, Terminology, and UX Review
-Review of notification messages, project terminology, and Home Page texts.
+- [1.1.1. Notification Text Review](1.1.1-notification-text-review.md) – Analysis of system notification messages for clarity, tone, consistency, and user comprehension.  
+     Suggested improvements make notifications more informative and actionable.
 
-**Includes:**
-- `1.2.1-notification-text-review.md`
-- `1.2.2-terminology-unification-table.md`
-- `1.2.3-home-page-text-and-ux-review.md`
+- [1.1.2. Home Page Text and UX Review](1.1.2-home-page-text-and-ux-review.md) – Evaluation of home page content, call-to-action wording, and overall user experience flow.  
+     Recommendations focus on enhancing usability, readability, and intuitive navigation.
 
-Screenshots are stored in `home-page-assets/`.
+### 1.2. Improving Password Validation
 
-### 1.3 – Clear Work Format Selection
-Clarifying the user’s work format selection to eliminate logical ambiguities.
+- [1.2. Improving Password Validation](1.2-improving-password-validation.md) – Static analysis of password requirements, including security standards, specification clarity, and UX considerations. The review addresses potential ambiguities, microcopy improvements, and suggestions for better guidance to users during password creation.
+
+
+
