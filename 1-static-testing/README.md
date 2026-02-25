@@ -10,10 +10,10 @@ Below are selected cases demonstrating different aspects of QA work.
 
 ### 1.1. Text, Terminology, and UX Review
 
-- [1.1.1. Notification Text Review](1.1.1-notification-text-review.md) – Analysis of system notification messages for clarity, tone, consistency, and user comprehension.  
+- [1.1.1. Notification Text Review](1.1-text-terminology-and-ux-review/1.1.1-notification-text-review.md) – Analysis of system notification messages for clarity, tone, consistency, and user comprehension.  
      Suggested improvements make notifications more informative and actionable.
 
-- [1.1.2. Home Page Text and UX Review](1.1.2-home-page-text-and-ux-review.md) – Evaluation of home page content, call-to-action wording, and overall user experience flow.  
+- [1.1.2. Home Page Text and UX Review](1.1-text-terminology-and-ux-review/1.1.2-home-page-text-and-ux-review.md) – Evaluation of home page content, call-to-action wording, and overall user experience flow.  
      Recommendations focus on enhancing usability, readability, and intuitive navigation.
 
 ### 1.2. Improving Password Validation
