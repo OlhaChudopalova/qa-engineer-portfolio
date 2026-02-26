@@ -124,5 +124,5 @@ Backend приймає значення, які:
 
 ## Attachments
 
-- [Before Fix](./screenshots/before_fix/)
+- [Before Fix](./screenshots/before/)
 
