@@ -24,5 +24,5 @@ After the fixes were implemented, retesting confirmed:
 
 - [Bug Report](./bug-report.md)
 - [Retesting Results](./retesting-results.md)
-- [Screenshots (Before Fix)](./screenshots/before_fix/)
+- [Screenshots (Before)](./screenshots/before/)
 - [Screenshots (After Fix)](./screenshots/after_fix/)
