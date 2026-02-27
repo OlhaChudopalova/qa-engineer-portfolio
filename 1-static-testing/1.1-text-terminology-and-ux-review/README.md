@@ -12,7 +12,7 @@ The objective of this review was to:
 
 ## Included Cases
 
-### **1.2.1 – Notification Text Review**
+### **1.1.1 – Notification Text Review**
 Static testing of notification and email texts, including:
 - terminology consistency,
 - grammar and wording issues,
@@ -21,7 +21,7 @@ Static testing of notification and email texts, including:
 
 ---
 
-### **1.2.2 – Home Page Text and UX Review**
+### **1.1.2 – Home Page Text and UX Review**
 Comprehensive review of Home Page texts with a focus on:
 - clarity and consistency,
 - UX alignment,
@@ -32,6 +32,17 @@ The findings are divided into:
 - **Quick Fixes** (minor improvements with immediate impact),
 - **Long-term UX Improvements** (structural and interaction-related recommendations).
 
-Screenshots and visual references are stored in:
-- `screenshots_quick`
-- `screenshots_long`
+---
+
+### Attachments
+
+#### Before Fix (Review Phase)
+
+
+- [Quick Fixes](./screenshots_quick/)
+- [Long-term Improvements](./screenshots_long/)
+
+#### After Fix (Implemented Improvements)
+
+
+- [Implemented Fixes](./screenshots_fix/)
