@@ -1,6 +1,21 @@
-# BUG: API accepts invalid JSON with duplicated keys leading to data loss
+# 🐞 Bug Report: API accepts invalid JSON with duplicated keys leading to data loss
 
 ---
+
+## Overview
+
+> This case presents the results of API testing for the `contacts_data` block using the POST and PUT endpoints:  
+> `/api/v1/executor/post/profile-data/` and `/api/v1/executor/update/profile-data/`. 
+> 
+> Testing revealed that malformed JSON with duplicated keys can overwrite fields and lead to loss of contact information.  
+> Required fields, such as LinkedIn, may be bypassed, and the frontend displays only the last saved value depending on key order.  
+> This highlights both a data integrity risk and potential violation of business rules, making server-side validation necessary.
+> 
+> Below is the detailed bug report along with links to screenshots documenting the issue.
+
+---
+## Priority
+Medium
 
 ## Endpoints
 - POST `/api/v1/executor/post/profile-data/`  
@@ -18,7 +33,6 @@ API приймає невалідну структуру JSON у блоці `con
 ## Preconditions  
 
 Користувач авторизований та має можливість заповнювати профіль через API.  
-**LinkedIn-профіль** є обов’язковим полем для збереження профілю.
 
 ---
 
@@ -30,20 +44,22 @@ API приймає невалідну структуру JSON у блоці `con
 ---
 
 ## Expected Result
+
 API має:
-- відхиляти невалідну структуру JSON;
-- повертати помилку 4xx у разі дубльованих ключів або неправильної структури;
-- **повертати помилку 4xx, якщо відсутнє обов’язкове поле LinkedIn**;
-- не дозволяти зберігати профіль без посилання на LinkedIn.
+1. Відхиляти некоректну структуру JSON.
+2. Повертати помилку 4xx у разі дубльованих ключів або неправильної структури.
+3. Повертати помилку 4xx, якщо відсутнє обов’язкове поле LinkedIn.
+4. Забороняти збереження профілю без посилання на LinkedIn.
 
 ---
 
 ## Actual Result
+
 API повертає 200 OK та зберігає лише останнє значення з дубльованих ключів.  
 В результаті:
-- відбувається втрата даних;
-- збережені контакти залежать від порядку ключів;
-- **профіль може бути збережений без обов’язкового LinkedIn**, що порушує бізнес-логіку.
+1. Втрачаються дані контактів.
+2. Збережені контакти залежать від порядку ключів у JSON.
+3. Профіль може бути збережений без обов’язкового поля LinkedIn, що порушує бізнес-логіку.
 
 ---
 
@@ -221,16 +237,11 @@ GET-запит повертає лише останнє значення:
 
 ```
 
-### 📎 Attachments (screenshots folder)
+### 📎 Attachments 
 
-🔸  Invalid POST request with duplicated keys  
-🔸  GET response showing data loss  
-🔸  Frontend displays only last saved contact
+Full cycle screenshots are organized by contact type:
 
-
-🔹 **last_github_lost_linkedin:** [01_post_last_github.jpg](screenshots/last_github_lost_linkedin/01_post_last_github.jpg), [02_get_last_github.jpg](screenshots/last_github_lost_linkedin/02_get_last_github.jpg), [03_front_last_github.jpg](screenshots/last_github_lost_linkedin/03_front_last_github.jpg)
-
-🔹 **last_phone:** [01_post_last_phone.jpg](screenshots/last_phone/01_post_last_phone.jpg), [02_get_last_phone.jpg](screenshots/last_phone/02_get_last_phone.jpg), [03_front_last_phone.jpg](screenshots/last_phone/03_front_last_phone.jpg)
-
-🔹 **last_whatsapp:** [01_post_last_whatsapp.jpg](screenshots/last_whatsapp/01_post_last_whatsapp.jpg), [02_get_last_whatsapp.jpg](screenshots/last_whatsapp/02_get_last_whatsapp.jpg), [03_front_last_whatsapp.jpg](screenshots/last_whatsapp/03_front_last_whatsapp.jpg)
+- [last_github_lost_linkedin folder](screenshots/last_github_lost_linkedin/) – POST → GET → frontend
+- [last_phone folder](screenshots/last_phone/) – POST → GET → frontend
+- [last_whatsapp folder](screenshots/last_whatsapp/) – POST → GET → frontend
 
