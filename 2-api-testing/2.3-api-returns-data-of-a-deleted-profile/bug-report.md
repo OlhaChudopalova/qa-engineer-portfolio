@@ -1,4 +1,4 @@
-# BUG: Public API returns data of a deleted profile
+# 🐞 Bug Report: Public API returns data of a deleted profile
 
 
 **Priority:** High
@@ -24,14 +24,14 @@
 
 ## Steps to Reproduce
 1. Видалити профіль користувача через DELETE `/api/v1/user/delete/`.  
-2. Переконатися, що API повертає 204 OK.  
+2. Переконатися, що API повертає 204 No Content. 
 3. Перевірити, що профіль відсутній у каталозі спеціалістів на фронтенді та в адмін-панелі.  
 4. Виконати GET-запит: `/api/v1/executor/executor-profiles/{uuid}` використовуючи UUID видаленого користувача.  
 5. Проаналізувати відповідь.
 
 ## Expected Result
 - Профіль користувача недоступний в каталозі спеціалістів на фронтенді.  
-- GET-запит має повертати помилку (наприклад, 404 Not Found або порожню відповідь).
+- GET-запит має повертати 404 Not Found або інший відповідний 4xx статус.
 
 ## Actual Result
 - Профіль відсутній на фронтенді.  
