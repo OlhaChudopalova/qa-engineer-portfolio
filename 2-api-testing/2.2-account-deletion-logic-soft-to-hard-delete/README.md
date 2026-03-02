@@ -178,8 +178,8 @@ Based on these findings, a decision was made to switch from soft delete to hard 
 ### 📎 Attachments  
 - Soft Delete → Re-registration: Profile shows residual data from the previous account (soft deleted):
 
-![Soft Delete](2-api-testing/2.2-account-deletion-logic-soft-to-hard-delete/screenshots/get_profile_data_soft.jpg)
+![Soft Delete](screenshots/get_profile_data_soft.jpg)
 
 
 - Hard Delete → Re-registration: Profile shows no residual data from the previous account (hard deleted):
-![Hard Delete](2-api-testing/2.2-account-deletion-logic-soft-to-hard-delete/screenshots/get_profile_data_hard.jpg)
+![Hard Delete](screenshots/get_profile_data_hard.jpg)
