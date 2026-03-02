@@ -1,43 +1,45 @@
-# Case: Account Deletion Logic – From Soft Delete to Hard Delete
 
-### 🔸 Value for Business & QA
-Демонстрація повного QA циклу:  
-**Detection → Analysis → Recommendation → Validation**
+# Account Deletion Logic – From Soft Delete to Hard Delete
 
 ---
 
-### 🔸 Background
-Під час тестування endpoint видалення акаунту було виявлено, що система використовує soft delete, через що:
-- повторна реєстрація з тим самим email зберігає user_id;
-- частково відновлюються персональні дані;
-- дані можуть переноситись між різними ролями (Company → Executor).
+## Overview
+This case presents the results of QA testing for the account deletion logic using the `/api/v1/user/delete/` endpoint.
+During testing, it was found that the system initially used soft delete, which caused:
 
-Це створювало:
-- ризики для безпеки та приватності;
-- неочікувану поведінку з точки зору UX;
-- складність при масштабуванні multi-role логіки.
+- re-registration with the same email retained the same user_id;
+- partial restoration of personal data;
+- data could be transferred across different roles (Company → Executor).
+
+These issues created:
+
+- potential security and privacy risks;
+- UX behavior;
+- complications when scaling multi-role logic.
+
+Based on these findings, a decision was made to switch from soft delete to hard delete, ensuring full account removal, clear role separation, and compliance with data privacy principles.
 
 ---
 
-## 🔹 Initial Testing: Soft Delete Behavior
+## Initial Testing: Soft Delete Behavior
 
 ## 1️⃣ Scenario: Delete Company Profile – Same role re-registration (Company → Company)
 
-**Environment**  
+### Environment 
 - Tool: Postman  
 - Browser: Google Chrome 141.0.7390.122 (64-bit)  
 - OS: Windows 11 Home 25H2  
 - URL: stafferia.com  
 
-**Endpoints**  
+### Endpoints 
 - DELETE: `/api/v1/user/delete/`  
 - GET: `/api/v1/customer/get/profile-data/`  
 
-**Preconditions**  
+### Preconditions  
 - Компанія зареєстрована та активована  
 - Company Profile заповнений валідними даними  
 
-**Test Steps**
+### Test Steps
 1. Отримати дані профілю компанії (GET /customer/get/profile-data)  
 2. Видалити акаунт (DELETE /user/delete)  
 3. Переконатися, що login недоступний  
@@ -46,11 +48,11 @@
 6. Увійти в систему  
 7. Отримати дані профілю після повторної реєстрації  
 
-**Expected Result**
+### Expected Result
 - Option A – Hard delete: новий профіль, без відновлення даних  
 - Option B – Soft delete: поведінка чітко задокументована, користувач поінформований про можливість відновлення даних  
 
-**Actual Result**
+### Actual Result
 - Повторна реєстрація дозволена  
 - Збережено `first_name`, `last_name`  
 - Інші поля очищені (`null`)  
@@ -97,11 +99,11 @@
 
 ### Potential Impacts
 
-**Technical**
+#### Technical
 - Ризики при реалізації multi-role логіки  
 - Можливі проблеми з правами доступу та ізоляцією даних  
 
-**Business / UX**
+#### Business / UX
 - Неочікуване перенесення даних між ролями  
 - Часткова втрата даних без попередження  
 - Відсутність прозорої комунікації  
@@ -123,14 +125,14 @@
 
 ---
 
-## 🔹 Decision: Change from Soft Delete to Hard Delete
+## Decision: Change from Soft Delete to Hard Delete
 Після обговорення та донесення інформації до BA та BE команди було прийнято рішення:  
 - **Замінити soft delete на hard delete.**
 
 
 ---
 
-## 🔹 Retesting After Logic Change (Hard Delete)
+## Retesting After Logic Change (Hard Delete)
 
 ### Test Table: Results of Full Account Deletion Scenario (Customer)
 
@@ -151,14 +153,14 @@
 
 ---
 
-## 🔹 Token Decoding Analysis After Fix
+## Token Decoding Analysis After Fix
 - новий акаунт отримує новий UUID  
 - дані та ідентичність не переносяться  
 - ролі більше не “успадковують” ідентичність попереднього user  
 
 ---
 
-### 🔹 Final Conclusion
+### Final Conclusion
 Система перейшла від:
 - часткового відновлення користувача;
 - переносу даних між ролями;
@@ -170,3 +172,14 @@
 - прозорої логіки ролей та усунення ризиків крос-ролевого витоку даних;
 - відповідності принципам data privacy;
 - покращення масштабованості ролей.
+
+---
+
+### 📎 Attachments  
+- Soft Delete → Re-registration: Profile shows residual data from the previous account (soft deleted):
+
+![Soft Delete](2-api-testing/2.2-account-deletion-logic-soft-to-hard-delete/screenshots/get_profile_data_soft.jpg)
+
+
+- Hard Delete → Re-registration: Profile shows no residual data from the previous account (hard deleted):
+![Hard Delete](2-api-testing/2.2-account-deletion-logic-soft-to-hard-delete/screenshots/get_profile_data_hard.jpg)
