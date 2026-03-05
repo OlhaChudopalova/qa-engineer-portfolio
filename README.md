@@ -46,11 +46,12 @@ Examined cross-layer validation inconsistencies between API and UI and documente
 
 ---
 
-## [3. Improvements](3-improvement/README.md)
+## [3. Improvements](3-improvement/README.md)  
+
 Proactive improvement proposals, security hardening initiatives, and system-level enhancement ideas aimed at improving platform reliability, data protection, and overall product quality.
 
-- [3.1. Security: Preventing Email Enumeration in Password Reset Flow](3.1-security-email-enumeration-password-reset/README.md)
-- [3.2. Clarification of Available / Unavailable Button Logic](3.2-available-unavailable-button-logic/README.md)
+- [3.1. Security: Preventing Email Enumeration in Password Reset Flow](3-improvement/3.1-security-email-enumeration-password-reset/README.md)
+- [3.2. Clarification of Available / Unavailable Button Logic](3-improvement/3.2-available-unavailable-button-logic/README.md)
 
 ---
 
